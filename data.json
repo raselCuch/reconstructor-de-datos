@@ -1,0 +1,419 @@
+{
+    "Invoice": {
+        "@xmlns": "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+        "@xmlns:cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",      
+        "@xmlns:cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+        "@xmlns:ccts": "urn:un:unece:uncefact:documentation:2",
+        "@xmlns:ds": "http://www.w3.org/2000/09/xmldsig#",
+        "@xmlns:ext": "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2",      
+        "@xmlns:qdt": "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2",
+        "@xmlns:sac": "urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1",  
+        "@xmlns:udt": "urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2",   
+        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "ext:UBLExtensions": {
+            "ext:UBLExtension": {
+                "ext:ExtensionContent": {
+                    "Signature": {
+                        "@Id": "SignOpenInvoice",
+                        "@xmlns": "http://www.w3.org/2000/09/xmldsig#",
+                        "SignedInfo": {
+                            "CanonicalizationMethod": {
+                                "@Algorithm": "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"        
+                            },
+                            "SignatureMethod": {
+                                "@Algorithm": "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
+                            },
+                            "Reference": {
+                                "@URI": "",
+                                "Transforms": {
+                                    "Transform": {
+                                        "@Algorithm": "http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+                                    }
+                                },
+                                "DigestMethod": {
+                                    "@Algorithm": "http://www.w3.org/2000/09/xmldsig#sha1"
+                                },
+                                "DigestValue": "d+S0PbNV53VYGLruL21hjSsgKd0="
+                            }
+                        },
+                        "SignatureValue": "bpN/JfdUJ7i72W03GOOpl4Jcp/Sunzulc9BWpGGTO9aXJl71QJM3HLo4ppwwd9Fs6imgCdChpJPPz5IAUU4umA0aqClLZCM7v0c4DhoWAUeyb0MfJqubkHtKTvvYz83YUoj+ZtBtGBdNBxLQcHhH4Zqp7KX8Ot5m8tTqtd8pnyp/QcjCcByviBwrBRrc/REjAQl5LnUVHaajooS5wvDsiDdAKrUbddgZCnjjnqMQ9bViEceTroV2vuwJLUVC8j6othj38UJDtmP88KoQ4dygRoUMmp0uIF4UBChTDSu7snld6LFSe6yxYmmEHxz+EGA5UYJuPQdctc62GqeDQ2KJPQ==",
+                        "KeyInfo": {
+                            "X509Data": {}
+                        }
+                    }
+                }
+            }
+        },
+        "cbc:UBLVersionID": "2.1",
+        "cbc:CustomizationID": "2.0",
+        "cbc:ID": "F002-00000002",
+        "cbc:IssueDate": "2024-08-20",
+        "cbc:IssueTime": "10:16:21",
+        "cbc:DueDate": "2024-08-20",
+        "cbc:InvoiceTypeCode": {
+            "@listID": "0101",
+            "@listAgencyName": "PE:SUNAT",
+            "@listName": "Tipo de Documento",
+            "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01",
+            "#text": "01"
+        },
+        "cbc:Note": {
+            "@languageLocaleID": "1000",
+            "#text": "CUARENTA Y SIETE CON 00/100 SOLES"
+        },
+        "cbc:DocumentCurrencyCode": {
+            "@listID": "ISO 4217 Alpha",
+            "@listName": "Currency",
+            "@listAgencyName": "United Nations Economic Commission for Europe",
+            "#text": "PEN"
+        },
+        "cbc:LineCountNumeric": "3",
+        "cac:Signature": {
+            "cbc:ID": "F002-00000002",
+            "cac:SignatoryParty": {
+                "cac:PartyIdentification": {
+                    "cbc:ID": "20610355154"
+                },
+                "cac:PartyName": {
+                    "cbc:Name": "REBO MARKET"
+                }
+            },
+            "cac:DigitalSignatureAttachment": {
+                "cac:ExternalReference": {
+                    "cbc:URI": "20610355154-F002-00000002"
+                }
+            }
+        },
+        "cac:AccountingSupplierParty": {
+            "cac:Party": {
+                "cac:PartyIdentification": {
+                    "cbc:ID": {
+                        "@schemeID": "6",
+                        "@schemeName": "Documento de Identidad",
+                        "@schemeAgencyName": "PE:SUNAT",
+                        "@schemeURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06",
+                        "#text": "20610355154"
+                    }
+                },
+                "cac:PartyName": {
+                    "cbc:Name": "REBO MARKET"
+                },
+                "cac:PartyLegalEntity": {
+                    "cbc:RegistrationName": "REBO MARKET",
+                    "cac:RegistrationAddress": {
+                        "cbc:AddressTypeCode": "0000"
+                    }
+                }
+            }
+        },
+        "cac:AccountingCustomerParty": {
+            "cac:Party": {
+                "cac:PartyIdentification": {
+                    "cbc:ID": {
+                        "@schemeID": "6",
+                        "@schemeName": "Documento de Identidad",
+                        "@schemeAgencyName": "PE:SUNAT",
+                        "@schemeURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06",
+                        "#text": "20394082521"
+                    }
+                },
+                "cac:PartyLegalEntity": {
+                    "cbc:RegistrationName": "PATCES CONTRATISTAS GENERALES S.R.L."
+                }
+            }
+        },
+        "cac:PaymentTerms": {
+            "cbc:ID": "FormaPago",
+            "cbc:PaymentMeansID": "Contado"
+        },
+        "cac:TaxTotal": {
+            "cbc:TaxAmount": {
+                "@currencyID": "PEN",
+                "#text": "0.00"
+            },
+            "cac:TaxSubtotal": {
+                "cbc:TaxableAmount": {
+                    "@currencyID": "PEN",
+                    "#text": "47.00"
+                },
+                "cbc:TaxAmount": {
+                    "@currencyID": "PEN",
+                    "#text": "0.00"
+                },
+                "cac:TaxCategory": {
+                    "cbc:ID": {
+                        "@schemeID": "UN/ECE 5305",
+                        "@schemeName": "Tax Category Identifier",
+                        "@schemeAgencyName": "United Nations Economic Commission for Europe",
+                        "#text": "E"
+                    },
+                    "cac:TaxScheme": {
+                        "cbc:ID": {
+                            "@schemeID": "UN/ECE 5305",
+                            "@schemeAgencyID": "6",
+                            "#text": "9997"
+                        },
+                        "cbc:Name": "EXO",
+                        "cbc:TaxTypeCode": "VAT"
+                    }
+                }
+            }
+        },
+        "cac:LegalMonetaryTotal": {
+            "cbc:LineExtensionAmount": {
+                "@currencyID": "PEN",
+                "#text": "47.00"
+            },
+            "cbc:TaxInclusiveAmount": {
+                "@currencyID": "PEN",
+                "#text": "47.00"
+            },
+            "cbc:PayableAmount": {
+                "@currencyID": "PEN",
+                "#text": "47.00"
+            }
+        },
+        "cac:InvoiceLine": [
+            {
+                "cbc:ID": "1",
+                "cbc:InvoicedQuantity": {
+                    "@unitCode": "NIU",
+                    "@unitCodeListID": "UN/ECE rec 20",
+                    "@unitCodeListAgencyName": "United Nations Economic Commission for Europe",        
+                    "#text": "1.00"
+                },
+                "cbc:LineExtensionAmount": {
+                    "@currencyID": "PEN",
+                    "#text": "8.00"
+                },
+                "cac:PricingReference": {
+                    "cac:AlternativeConditionPrice": {
+                        "cbc:PriceAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "8.00"
+                        },
+                        "cbc:PriceTypeCode": {
+                            "@listName": "Tipo de Precio",
+                            "@listAgencyName": "PE:SUNAT",
+                            "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16",
+                            "#text": "01"
+                        }
+                    }
+                },
+                "cac:TaxTotal": {
+                    "cbc:TaxAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "0.00"
+                    },
+                    "cac:TaxSubtotal": {
+                        "cbc:TaxableAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "8.00"
+                        },
+                        "cbc:TaxAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "0.00"
+                        },
+                        "cac:TaxCategory": {
+                            "cbc:ID": {
+                                "@schemeID": "UN/ECE 5305",
+                                "@schemeName": "Codigo de tributos",
+                                "@schemeAgencyName": "PE:SUNAT",
+                                "#text": "E"
+                            },
+                            "cbc:Percent": "18.00",
+                            "cbc:TaxExemptionReasonCode": {
+                                "@listAgencyName": "PE:SUNAT",
+                                "@listName": "Afectacion del IGV",
+                                "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07",       
+                                "#text": "20"
+                            },
+                            "cac:TaxScheme": {
+                                "cbc:ID": {
+                                    "@schemeID": "UN/ECE 5153",
+                                    "@schemeName": "Codigo de tributos",
+                                    "@schemeAgencyName": "PE:SUNAT",
+                                    "#text": "9997"
+                                },
+                                "cbc:Name": "EXO",
+                                "cbc:TaxTypeCode": "VAT"
+                            }
+                        }
+                    }
+                },
+                "cac:Item": {
+                    "cbc:Description": "AGUA SILOE X PQT",
+                    "cac:SellersItemIdentification": {
+                        "cbc:ID": "004533"
+                    }
+                },
+                "cac:Price": {
+                    "cbc:PriceAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "8.00"
+                    }
+                }
+            },
+            {
+                "cbc:ID": "2",
+                "cbc:InvoicedQuantity": {
+                    "@unitCode": "NIU",
+                    "@unitCodeListID": "UN/ECE rec 20",
+                    "@unitCodeListAgencyName": "United Nations Economic Commission for Europe",        
+                    "#text": "1.00"
+                },
+                "cbc:LineExtensionAmount": {
+                    "@currencyID": "PEN",
+                    "#text": "19.50"
+                },
+                "cac:PricingReference": {
+                    "cac:AlternativeConditionPrice": {
+                        "cbc:PriceAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "19.50"
+                        },
+                        "cbc:PriceTypeCode": {
+                            "@listName": "Tipo de Precio",
+                            "@listAgencyName": "PE:SUNAT",
+                            "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16",
+                            "#text": "01"
+                        }
+                    }
+                },
+                "cac:TaxTotal": {
+                    "cbc:TaxAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "0.00"
+                    },
+                    "cac:TaxSubtotal": {
+                        "cbc:TaxableAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "19.50"
+                        },
+                        "cbc:TaxAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "0.00"
+                        },
+                        "cac:TaxCategory": {
+                            "cbc:ID": {
+                                "@schemeID": "UN/ECE 5305",
+                                "@schemeName": "Codigo de tributos",
+                                "@schemeAgencyName": "PE:SUNAT",
+                                "#text": "E"
+                            },
+                            "cbc:Percent": "18.00",
+                            "cbc:TaxExemptionReasonCode": {
+                                "@listAgencyName": "PE:SUNAT",
+                                "@listName": "Afectacion del IGV",
+                                "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07",       
+                                "#text": "20"
+                            },
+                            "cac:TaxScheme": {
+                                "cbc:ID": {
+                                    "@schemeID": "UN/ECE 5153",
+                                    "@schemeName": "Codigo de tributos",
+                                    "@schemeAgencyName": "PE:SUNAT",
+                                    "#text": "9997"
+                                },
+                                "cbc:Name": "EXO",
+                                "cbc:TaxTypeCode": "VAT"
+                            }
+                        }
+                    }
+                },
+                "cac:Item": {
+                    "cbc:Description": "VOLT FANTASY 300ML XPQT",
+                    "cac:SellersItemIdentification": {
+                        "cbc:ID": "001323"
+                    }
+                },
+                "cac:Price": {
+                    "cbc:PriceAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "19.50"
+                    }
+                }
+            },
+            {
+                "cbc:ID": "3",
+                "cbc:InvoicedQuantity": {
+                    "@unitCode": "NIU",
+                    "@unitCodeListID": "UN/ECE rec 20",
+                    "@unitCodeListAgencyName": "United Nations Economic Commission for Europe",        
+                    "#text": "1.00"
+                },
+                "cbc:LineExtensionAmount": {
+                    "@currencyID": "PEN",
+                    "#text": "19.50"
+                },
+                "cac:PricingReference": {
+                    "cac:AlternativeConditionPrice": {
+                        "cbc:PriceAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "19.50"
+                        },
+                        "cbc:PriceTypeCode": {
+                            "@listName": "Tipo de Precio",
+                            "@listAgencyName": "PE:SUNAT",
+                            "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16",
+                            "#text": "01"
+                        }
+                    }
+                },
+                "cac:TaxTotal": {
+                    "cbc:TaxAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "0.00"
+                    },
+                    "cac:TaxSubtotal": {
+                        "cbc:TaxableAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "19.50"
+                        },
+                        "cbc:TaxAmount": {
+                            "@currencyID": "PEN",
+                            "#text": "0.00"
+                        },
+                        "cac:TaxCategory": {
+                            "cbc:ID": {
+                                "@schemeID": "UN/ECE 5305",
+                                "@schemeName": "Codigo de tributos",
+                                "@schemeAgencyName": "PE:SUNAT",
+                                "#text": "E"
+                            },
+                            "cbc:Percent": "18.00",
+                            "cbc:TaxExemptionReasonCode": {
+                                "@listAgencyName": "PE:SUNAT",
+                                "@listName": "Afectacion del IGV",
+                                "@listURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07",       
+                                "#text": "20"
+                            },
+                            "cac:TaxScheme": {
+                                "cbc:ID": {
+                                    "@schemeID": "UN/ECE 5153",
+                                    "@schemeName": "Codigo de tributos",
+                                    "@schemeAgencyName": "PE:SUNAT",
+                                    "#text": "9997"
+                                },
+                                "cbc:Name": "EXO",
+                                "cbc:TaxTypeCode": "VAT"
+                            }
+                        }
+                    }
+                },
+                "cac:Item": {
+                    "cbc:Description": "VOLT MACA 300ML XPQT",
+                    "cac:SellersItemIdentification": {
+                        "cbc:ID": "000305"
+                    }
+                },
+                "cac:Price": {
+                    "cbc:PriceAmount": {
+                        "@currencyID": "PEN",
+                        "#text": "19.50"
+                    }
+                }
+            }
+        ]
+    }
+}
