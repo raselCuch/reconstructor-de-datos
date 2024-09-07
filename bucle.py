@@ -2,50 +2,44 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 import xmltodict, json
 
-# Path del directorio
 path = Path("./cucho")
-i = 0
-# Obtener todos los archivos en el directorio
+# i = 0
 for file in path.rglob('*'):  # rglob permite buscar archivos recursivamente
     if file.is_file():
-        # print(file)
-
         file_str = str(file)
-        
         caracteres_a_reemplazar = '\\'  # Usar doble backslash
-
         xml_file = file_str.replace(caracteres_a_reemplazar, '/') # elimina caracteres innecesarios
-        
-        # print("./"+xml_file + "")
-        
-        # print("\n")
         # print("-------------------------------archivo: "+"./"+xml_file + " -------------------------------")
-
         xml_file = open( xml_file )
         obj = "" + xml_file.read() + "" # extrae en bruto el xml
 
         caracteres_a_eliminar = 'ï»¿'
         stringLimpio = obj.replace(caracteres_a_eliminar, '') # elimina caracteres innecesarios
-        # print("-------------------------------otro archivo-------------------------------\n")
-        # print(stringLimpio)
-
         obj2 = xmltodict.parse(stringLimpio) # convierte a xml el string
         json_str = json.dumps(obj2, indent=4)
-        # print(json_str)
-
         newObj = json.loads(json_str) # accede al objto que esta dentro
 
         obje = newObj['Invoice'] # entra a la variable 'Invoice'
-
-        # extrae la info necesaria
         
+        # Numero = obje['cac:Signature']['cbc:ID'].split('-')[1]
+        # IdVenta = 'C0000000001013002-'+Numero+'00220610355154'
+
+        #
         Numero = obje['cac:Signature']['cbc:ID'].split('-')[1]
-        IdVenta = 'C0000000001013002-'+Numero+'00220610355154'
+        tipoDoc = obje['cac:Signature']['cbc:ID'][0]
+        tipoDocNum = '013' if tipoDoc == 'B' else '014'
+
+        Empresa = obje['cac:Signature']['cac:SignatoryParty']['cac:PartyIdentification']['cbc:ID']
+        RUCd = obje['cac:AccountingCustomerParty']['cac:Party']['cac:PartyIdentification']['cbc:ID']['#text']
+        Almacen = '002'
+        IdVenta = RUCd + tipoDocNum + '002-' + Numero + Almacen + Empresa
+        #
+
         Fecha = obje['cbc:IssueDate']
         # Cliente = "C0000000001"
         Cliente = obje['cac:AccountingCustomerParty']['cac:Party']['cac:PartyIdentification']['cbc:ID']['#text']
         TipDocCli = "1"
-        Doc = "013"
+        Doc = tipoDocNum
         Serie = "002"
         # Numero
         TMoneda = "001"
@@ -66,13 +60,13 @@ for file in path.rglob('*'):  # rglob permite buscar archivos recursivamente
 
         TEst = "C"
         Est = "A"
-        Empresa = "20610355154"
-        Almacen = "002"
+        # Empresa = "20610355154"
+        # Almacen = "002"
         Vendedor = "carlos"
         Usuario = "carlos"
         ArchXml = ""
-
         NomArchXml = obje['cac:Signature']['cbc:ID'] + ".xml"
+
         FecCreacion = obje['cbc:IssueDate'] + " " + obje['cbc:IssueTime']
 
         UserCreacion = "carlos"
@@ -95,10 +89,6 @@ for file in path.rglob('*'):  # rglob permite buscar archivos recursivamente
 
         # i=i+1
         # print(i)
-        # print(obj)
-        
-        # print("-------------------------------archivo: "+"./"+xml_file + " -------------------------------\n")
-
         # print("IdVenta: ", IdVenta)
         # print("Fecha: ", Fecha)
         # print("Cliente: ", Cliente)
@@ -146,7 +136,6 @@ for file in path.rglob('*'):  # rglob permite buscar archivos recursivamente
         # print("MontoPago2:", MontoPago2)
         # print("CantArt:", CantArt)
 
-        # Crear la línea CSV
         csv_line = ';'.join([
             IdVenta, Fecha, Cliente, TipDocCli, Doc, Serie, Numero, TMoneda, NPedido, TCambio, TVenta, NDias, FVence,
             TBruto, TExonerada, TInafecta, TGratuita, TIgv, Total, TEst, Est, Empresa, Almacen, Vendedor, Usuario,
@@ -154,7 +143,4 @@ for file in path.rglob('*'):  # rglob permite buscar archivos recursivamente
             ResumenFirma, ValorFirma, Cort, TipoPago, IdCajaApert, TipoPago2, MontoPago2, CantArt
         ])
 
-        # Imprimir la línea CSV
         print(csv_line)
-
-# print(i)

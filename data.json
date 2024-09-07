@@ -1,7 +1,9 @@
-{ 
-    "cbc:PriceAmount": 
-        { 
-            "@currencyID": "PEN", 
-            "#text": "12.00" 
-        } 
+{
+    "cbc:ID": {
+        "@schemeID": "1",
+        "@schemeName": "Documento de Identidad",
+        "@schemeAgencyName": "PE:SUNAT",
+        "@schemeURI": "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06",
+        "#text": "C0000000001"
+    }
 }
