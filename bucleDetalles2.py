@@ -50,11 +50,30 @@ for file in path.rglob('*'):
             Dcto = '0'
             Igv = '0'
 
+
+
             PVentaN = float(PVenta)  # Convertir a float para manejar decimales
             CantidadN = int(Cantidad)  # Convertir a entero
 
+            if PVentaN.is_integer():
+                PVentaN_str = str(int(PVentaN))  # Convertir a entero y luego a string
+            else:
+                PVentaN_str = str(PVentaN)  # Mantener como flo
+            # print('pventta: ', PVentaN_str)
+            # print('CantidadN: ', CantidadN)
+
             Importe = PVentaN * CantidadN
-            Importe_str = str(Importe)
+
+            # Importe_str = str(Importe)
+            if Importe.is_integer():
+                Importe_str = str(int(Importe))  # Convertir a entero y luego a string
+            else:
+                Importe_str = str(Importe)  # Mantener como float
+            # print('\n')
+            # print('Importe_str: ', Importe_str)
+
+
+
 
             TipPrecio = ""
             TipImpuesto = ""
@@ -67,7 +86,7 @@ for file in path.rglob('*'):
             PCosto = ""
 
             csv_line = ';'.join([
-                IdVenta, Codigo, Marca, Unidad, Proced, PVenta, Cantidad, Dcto, Igv, Importe_str, 
+                IdVenta, Codigo, Marca, Unidad, Proced, PVentaN_str, Cantidad, Dcto, Igv, Importe_str, 
                 Almacen, Empresa, TipPrecio, TipImpuesto, FecCreacion, UserCreacion, FecModi, 
                 UserModi, Norden, DescripServ, PCosto
             ])
