@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import xmltodict, json
 
 path = Path("./xml")
-i = 0
+iContador = 0
 
 for file in path.rglob('*'):
     if file.is_file():
@@ -72,11 +72,8 @@ for file in path.rglob('*'):
             # print('\n')
             # print('Importe_str: ', Importe_str)
 
-
-
-
-            TipPrecio = ""
-            TipImpuesto = ""
+            TipPrecio = "01"
+            TipImpuesto = "20"
             FecCreacion = obje['cbc:IssueDate'] + " " + obje['cbc:IssueTime']
             UserCreacion = "carlos"
             FecModi = ""
@@ -92,4 +89,6 @@ for file in path.rglob('*'):
             ])
 
             print(csv_line)
-            # print("-------------")
+            
+            iContador=iContador+1
+print(iContador)
