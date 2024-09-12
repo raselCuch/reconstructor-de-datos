@@ -1,7 +1,8 @@
 import mysql.connector
 import sys
 
-conexion = mysql.connector.connect(user='root', password="123456", host='localhost', database='rebobackub2', port='3306')
+# conexion = mysql.connector.connect(user='root', password="123456", host='localhost', database='rebobackub2', port='3306')
+conexion = mysql.connector.connect(user='root', password="Server123", host='26.23.122.162', database='bdrebomarket', port='3306')
 if not  conexion.is_connected():
     print("Error de conexion: ", conexion)
     sys.exit()
@@ -25,14 +26,19 @@ for fila in resultados:
 cursor.close()
 conexion.close()
 
-print("Captured Data:")
+# print("Captured Data:")
 for item in captured_data:
     CodArt = item['CodArt']
     Nombre = item['Nombre']
-    FecCreacion = item['FecCreacion'].strftime('%Y-%m-%d %H:%M:%S') if item['FecCreacion'] else None
-    FecModi = item['FecModi'].strftime('%Y-%m-%d %H:%M:%S') if item['FecModi'] else "No modificado"
+    # FecCreacion = item['FecCreacion'].strftime('%Y-%m-%d %H:%M:%S') if item['FecCreacion'] else None
+    # FecModi = item['FecModi'].strftime('%Y-%m-%d %H:%M:%S') if item['FecModi'] else "No modificado"
+    FecCreacion = item['FecCreacion'].date().strftime('%Y-%m-%d') if item['FecCreacion'] else None
+    HoraCreacion = item['FecCreacion'].time().strftime('%H:%M:%S') if item['FecCreacion'] else None
 
-    info = CodArt + '; ' + Nombre + '; ' + FecCreacion + '; ' + FecModi
+    FecModi = item['FecModi'].date().strftime('%Y-%m-%d') if item['FecModi'] else "No modificado"
+    HoraModi = item['FecModi'].time().strftime('%H:%M:%S') if item['FecModi'] else ""
+
+    info = CodArt + '; ' + Nombre + '; ' + FecCreacion+ '    ' + HoraCreacion + '; ' + FecModi + '    ' + HoraModi
 
     print(info)
     # print(item)

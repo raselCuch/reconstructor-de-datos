@@ -5,6 +5,7 @@ import xmltodict, json
 path = Path("./xml")
 iContador = 0
 iContadorUnicos = 0
+iContadorCantidadProductosVendidos = 0
 productos_unicos = set()  # Crear un conjunto para almacenar los códigos únicos
 
 for file in path.rglob('*'):
@@ -29,14 +30,35 @@ for file in path.rglob('*'):
             
             Codigo = invoice_line['cac:Item']['cac:SellersItemIdentification']['cbc:ID']
             nombre = invoice_line['cac:Item']['cbc:Description']
+            
+            PVenta = invoice_line['cac:PricingReference']['cac:AlternativeConditionPrice']['cbc:PriceAmount']['#text']
+            Cantidad = invoice_line['cbc:InvoicedQuantity']['#text'].split('.')[0]
+
+            PVentaN = float(PVenta)  # Convertir a float para manejar decimales
+            CantidadN = int(Cantidad)  # Convertir a entero
+            iContadorCantidadProductosVendidos = iContadorCantidadProductosVendidos + CantidadN 
+
+            if PVentaN.is_integer():
+                PVentaN_str = str(int(PVentaN))  # Convertir a entero y luego a string
+            else:
+                PVentaN_str = str(PVentaN)  # Mantener como flo
+
+            Importe = PVentaN * CantidadN
+            if Importe.is_integer():
+                Importe_str = str(int(Importe))  # Convertir a entero y luego a string
+            else:
+                Importe_str = str(Importe)  # Mantener como float
 
             # print('Codigo: ', Codigo)
             # print('nombre: ', nombre)
+            # print('PVentaN_str: ', PVentaN_str)
+            # print('CantidadN: ', CantidadN)
+            # print('Importe_str: ', Importe_str)
 
             if Codigo not in productos_unicos:  # si código ya procesado
                 iContadorUnicos = iContadorUnicos + 1
                 productos_unicos.add(Codigo)  # Agregar el código al conjunto de productos únicos
-                csv_line = ';'.join([Codigo, nombre, str(iContadorUnicos), '*********'])
+                csv_line = ';'.join([Codigo, nombre, PVentaN_str, str(CantidadN), Importe_str])
                 print(csv_line)
             # else:
             #     csv_line = ';'.join([Codigo, nombre, str(iContador)])
@@ -44,4 +66,5 @@ for file in path.rglob('*'):
 print('--------------------------------------------------------------')
 print('Total de productos: ',iContador)
 print('Total de productos unicos: ',iContadorUnicos)
+print('Total de productos vendidos: ',iContadorCantidadProductosVendidos)
 # print(f'Total de productos únicos: {len(productos_unicos)}')
